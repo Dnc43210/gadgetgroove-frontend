@@ -58,6 +58,7 @@ export default function NavigationBar() {
                                                 {item.name}
                                             </a>
                                         ))}
+                                        
                                     </div>
                                 </div>
                             </div>
