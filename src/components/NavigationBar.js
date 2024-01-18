@@ -9,6 +9,7 @@ import {
   XMarkIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
+import Search from "./Search";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -42,7 +43,7 @@ export default function NavigationBar() {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-9 w-auto"
-                    src={`${logo}?color=indigo&shade=500`}
+                    src={logo}
                     alt="Your Company"
                   />
                 </div>
@@ -63,19 +64,11 @@ export default function NavigationBar() {
                         {item.name}
                       </a>
                     ))}
-                    <a>
-                      <input
-                        class="border-2 border-gray-600 bg-gray-800 h-10 pl-2 pr-8 rounded-lg text-sm focus:outline-none"
-                        type="search"
-                        name="search"
-                        placeholder="Search"
-                      />
-                    </a>
+                    <Search />
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
