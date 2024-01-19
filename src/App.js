@@ -1,22 +1,39 @@
-import './App.css';
-import Banner from './components/Banner';
-import Collections from './components/Collections';
-import NavigationBar from './components/NavigationBar';
-import { Footer } from './components/footer';
-const withMT = require("@material-tailwind/react/utils/withMT");
+import "./App.css";
+// import Banner from "./components/Banner";
 
+import Collections from "./components/Collections";
+import NavigationBar from "./components/NavigationBar";
 
-function App() {
-  return (
-    <>
-      <NavigationBar/>
-      <Banner/>
-      <Collections/>
-      <Footer/>
+import React, { Component } from "react";
+import Signin from "./components/Signin";
+import { Footer } from "./components/Footer";
 
-      
-    </>
-  );
+// const withMT = require("@material-tailwind/react/utils/withMT");
+
+export default class App extends Component {
+  constructor()
+  {
+    super();
+    this.state = {
+      isLogged : true
+    }
+  }
+
+  render() {
+    return (
+      <>
+      {this.state.isLogged ? 
+      <div className="Home">
+        <NavigationBar />
+        <Collections />
+        <Footer/>
+      </div>
+      :
+      <>
+        <Signin/>
+      </>
+      }
+      </>
+    );
+  }
 }
-
-export default App; 
