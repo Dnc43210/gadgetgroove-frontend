@@ -3,9 +3,9 @@ import { Carousel } from "flowbite-react";
 
 function Banner() {
   const srcList = [
-    "https://img.freepik.com/free-photo/black-friday-elements-assortment_23-2149074076.jpg?t=st=1705594102~exp=1705594702~hmac=44463c6f58263e251d8ccb46d807c3d5efce10ce6ae80f03b3fe4fe63b694237",
-    "https://img.freepik.com/free-vector/black-friday-sale-banner-with-offer-details_1017-34730.jpg?w=826&t=st=1705596233~exp=1705596833~hmac=416661e071161f23e04569b1af10db5898417dfaa9b6a64365420cb592c7c117",
-    "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+    "https://img.freepik.com/free-vector/realism-landing-page-template-design_23-2150359479.jpg?w=740&t=st=1705641031~exp=1705641631~hmac=b6e4fb1cc9d71ebc28ac61892ea601fbda3c447776b52d89c3525b9d55a009ce",
+    "https://img.freepik.com/premium-vector/online-shopping-with-mobile-store-design-discount-promotion-banner_62391-413.jpg?w=740",
+    "https://img.freepik.com/free-vector/flat-design-shopping-center-design-template_23-2149321347.jpg?w=996&t=st=1705641183~exp=1705641783~hmac=b04685daf43a42bed654c3f7131a5da72eef32f3e80b02e2619d807af46c4b4d",
   ];
   return (
     <div className=" h-56 sm:h-64 xl:h-80 2xl:h-96 ">
