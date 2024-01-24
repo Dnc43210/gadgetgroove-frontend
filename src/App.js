@@ -7,6 +7,7 @@ import NavigationBar from "./components/NavigationBar";
 import React, { Component } from "react";
 import Signin from "./components/Signin";
 import { Footer } from "./components/Footer";
+import ProductList from "./components/ProductList";
 
 // const withMT = require("@material-tailwind/react/utils/withMT");
 
@@ -26,6 +27,7 @@ export default class App extends Component {
       <div className="Home">
         <NavigationBar />
         <Collections />
+        {/* <ProductList /> */}
         <Footer/>
       </div>
       :
