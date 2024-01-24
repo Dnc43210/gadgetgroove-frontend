@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Banner from "./Banner";
 
 const callouts = [
@@ -27,7 +28,20 @@ const callouts = [
   },
 ];
 
+
+
 export default function Collections() {
+  const [categories, setCategories] = useState([]);
+  
+  useEffect (()=> {
+    fetch('https://dummyjson.com/products/categories')
+  .then(response => response.json())
+  .then(data => setCategories(data))
+  .catch(error => console.error('error fetching categories',error));
+  },[])
+
+  // console.log(categories)
+
   return (
     <>
     {/* Banner as a Component */}
@@ -43,23 +57,23 @@ export default function Collections() {
               
               {/* Featured Category Cards */}
 
-              {callouts.map((callout) => (
-                <div key={callout.name} className="group relative">
+              {categories.map((category,i) => (
+                <div key={"name"+i} className="group relative">
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
-                      src={callout.imageSrc}
-                      alt={callout.imageAlt}
+                      src="https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt="laptop"
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
                   <h3 className="mt-6 text-sm text-gray-500">
-                    <a href={callout.href}>
+                    <a href="/">
                       <span className="absolute inset-0" />
-                      {callout.name}
+                      {category}
                     </a>
                   </h3>
                   <p className="text-base font-semibold text-gray-900">
-                    {callout.description}
+                    {category}
                   </p>
                 </div>
               ))}
