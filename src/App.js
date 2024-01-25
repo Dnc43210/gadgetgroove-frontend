@@ -26,8 +26,8 @@ export default class App extends Component {
       {this.state.isLogged ? 
       <div className="Home">
         <NavigationBar />
-        <Collections />
-        {/* <ProductList /> */}
+        {/* <Collections /> */}
+        <ProductList />
         <Footer/>
       </div>
       :

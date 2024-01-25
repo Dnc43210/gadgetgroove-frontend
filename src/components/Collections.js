@@ -1,35 +1,6 @@
 import { useEffect, useState } from "react";
 import Banner from "./Banner";
 
-const callouts = [
-  {
-    name: "Laptops",
-    description: "New Launches in Laptops",
-    imageSrc:
-      "https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    imageAlt: "laptop",
-    href: "/",
-  },
-  {
-    name: "Mobiles",
-    description: "Top Launches in Mobiles",
-    imageSrc:
-      "https://images.unsplash.com/photo-1558562805-4bf1e2a724eb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    imageAlt: "Mobiles",
-    href: "/",
-  },
-  {
-    name: "Headphones",
-    description: "Fan Favourites in Headphones",
-    imageSrc:
-      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=1465&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
-    href: "#",
-  },
-];
-
-
-
 export default function Collections() {
   const [categories, setCategories] = useState([]);
   
@@ -40,7 +11,7 @@ export default function Collections() {
   .catch(error => console.error('error fetching categories',error));
   },[])
 
-  // console.log(categories)
+  // console.log(zcategories)
 
   return (
     <>
