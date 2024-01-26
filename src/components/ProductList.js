@@ -2,30 +2,32 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ProductList() {
-    const [data,setData] = useState([]);
+    const [products,setProducts] = useState([]);
 
-    // useEffect(()=>{
-    //     axios.get("https://dummyjson.com/products/category/smartphones")
-    //     .then(response => setData(response.data))
-    //     .catch(error => console.error('error fetching data', error))
-    // },[])
-
-    // console.log(data);
+    useEffect (()=> {
+      fetch('https://dummyjson.com/products/category/smartphones')
+    .then(response => response.json())
+    .then(data => setProducts(data.products))
+    .catch(error => console.error('error fetching categories',error));
+    console.log(products)
+    },[])
+  
+    // console.log(products)
     
 
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          {data}
+          Smartphones
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {data.products && data.products.map((product) => (
-            <div className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-              <a href={product.href}>
+          {products && products.map((product,i) => (
+            <li className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+              <a href={product.href} key={"product"+1}>
                 <img
-                  src={product.imageSrc}
+                  src={product.images[product.images.length -1]}
                   alt={product.imageAlt}
                   className="h-80 w-72 object-cover rounded-t-xl"
                 />
@@ -63,7 +65,7 @@ export default function ProductList() {
                   </div>
                 </div>
               </a>
-            </div>
+            </li>
           ))}
         </div>
       </div>
