@@ -8,10 +8,10 @@ function Banner() {
     "https://img.freepik.com/free-vector/flat-design-shopping-center-design-template_23-2149321347.jpg?w=996&t=st=1705641183~exp=1705641783~hmac=b04685daf43a42bed654c3f7131a5da72eef32f3e80b02e2619d807af46c4b4d",
   ];
   return (
-    <div className=" h-56 sm:h-64 xl:h-80 2xl:h-96 ">
-      <Carousel slideInterval={2000}>
+    <div className=" h-56 sm:h-64 xl:h-80 2xl:h-96 rounded-none">
+      <Carousel className="rounded-none" slideInterval={2000}>
         {srcList.map((src,i) => (
-          <img src={src} alt={"banner"+i} className="h-full w-full object-cover"/>
+          <img src={src} alt={"banner"+i} className="h-full w-full object-cover rounded-none"/>
         ))}
       </Carousel>
     </div>

@@ -1,5 +1,5 @@
 import "./App.css";
-// import Banner from "./components/Banner";
+import { Link, Route, Routes } from "react-router-dom";
 
 import Collections from "./components/Collections";
 import NavigationBar from "./components/NavigationBar";
@@ -7,34 +7,38 @@ import NavigationBar from "./components/NavigationBar";
 import React, { Component } from "react";
 import Signin from "./components/Signin";
 import { Footer } from "./components/Footer";
-import ProductList from "./components/ProductList";
+import Categories from "./components/Categories";
+import SearchPage from "./components/SearchPage";
 
 // const withMT = require("@material-tailwind/react/utils/withMT");
 
 export default class App extends Component {
-  constructor()
-  {
+  constructor() {
     super();
     this.state = {
-      isLogged : true
-    }
+      isLogged: true,
+    };
   }
 
   render() {
     return (
       <>
-      {this.state.isLogged ? 
-      <div className="Home">
-        <NavigationBar />
-        <Collections />
-        {/* <ProductList /> */}
-        <Footer/>
-      </div>
-      :
-      <>
-        <Signin/>
-      </>
-      }
+        {this.state.isLogged ? (
+          <div className="Home">
+            <NavigationBar />
+            <Routes>
+              <Route path="/" element={<Collections />}></Route>
+              <Route path="/home" element={<Collections />}></Route>
+              <Route path="/categories" element={<Categories />}></Route>
+              <Route path="/search" element={<SearchPage />}></Route>
+            </Routes>
+            <Footer />
+          </div>
+        ) : (
+          <>
+            <Signin />
+          </>
+        )}
       </>
     );
   }

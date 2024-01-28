@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 export default function ProductList() {
     const [products,setProducts] = useState([]);
@@ -9,7 +9,7 @@ export default function ProductList() {
     .then(response => response.json())
     .then(data => setProducts(data.products))
     .catch(error => console.error('error fetching categories',error));
-    console.log(products)
+    // console.log(products)
     },[])
   
     // console.log(products)
