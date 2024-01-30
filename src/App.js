@@ -1,6 +1,5 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-
 import Collections from "./components/Collections";
 
 import React, { Component } from "react";
@@ -13,13 +12,6 @@ import Login from "./components/Login";
 // const withMT = require("@material-tailwind/react/utils/withMT");
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLogged: true,
-    };
-  }
-
   render() {
     return (
       <>
