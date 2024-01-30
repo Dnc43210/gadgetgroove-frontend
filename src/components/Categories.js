@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import Layout from "../Layout";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -14,7 +15,7 @@ export default function Categories() {
   }, []);
 
   return (
-    <>
+    <Layout>
       <div className="bg-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6" >
           <div className="mx-auto max-w-2xl py-8 sm:py-2 lg:max-w-none lg:py-3">
@@ -46,6 +47,6 @@ export default function Categories() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

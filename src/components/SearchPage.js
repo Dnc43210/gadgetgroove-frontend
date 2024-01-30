@@ -1,8 +1,9 @@
 import React from "react";
+import Layout from "../Layout";
 
 export default function SearchPage() {
   return (
-    <>
+    <Layout>
       <form class="flex items-center px-10 py-10">
         <label for="simple-search" class="sr-only">
           Search
@@ -55,6 +56,6 @@ export default function SearchPage() {
           <span class="sr-only">Search</span>
         </button>
       </form>
-    </>
+    </Layout>
   );
 }

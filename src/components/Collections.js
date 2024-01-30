@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
 import Banner from "./Banner";
+import Layout from "../Layout";
 
 export default function Collections() {
   const categories = [
@@ -28,7 +29,7 @@ export default function Collections() {
   // console.log(zcategories)
 
   return (
-    <>
+    <Layout>
       {/* Banner as a Component */}
       <Banner />
 
@@ -66,6 +67,6 @@ export default function Collections() {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Layout from "../Layout";
 // import axios from "axios";
 
 export default function ProductList() {
@@ -17,7 +18,8 @@ export default function ProductList() {
   // console.log(products)
 
   return (
-    <div className="bg-white">
+    <Layout>
+      <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
           {categoryName.charAt(0).toUpperCase()+categoryName.slice(1).toLowerCase()}
@@ -74,5 +76,6 @@ export default function ProductList() {
         </div>
       </div>
     </div>
+    </Layout>
   );
 }
