@@ -15,25 +15,20 @@ export default class App extends Component {
   render() {
     return (
       <>
-        {this.state.isLogged ? (
-          <div className="Home">
-           
-            <Routes>
-              <Route path="/" element={<Collections />}></Route>
-              <Route path="/home" element={<Collections />}></Route>
-              <Route path="/categories" element={<Categories />}></Route>
-              <Route path="/category/:categoryName" element={<ProductList/>}></Route>
-              <Route path="/search" element={<SearchPage />}></Route>
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="/signin" element={<Signin />}></Route>
-            </Routes>
-            
-          </div>
-        ) : (
-          <>
-            <Signin />
-          </>
-        )}
+        <div className="Home">
+          <Routes>
+            <Route path="/" element={<Collections />}></Route>
+            <Route path="/home" element={<Collections />}></Route>
+            <Route path="/categories" element={<Categories />}></Route>
+            <Route
+              path="/category/:categoryName"
+              element={<ProductList />}
+            ></Route>
+            <Route path="/search" element={<SearchPage />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/signin" element={<Signin />}></Route>
+          </Routes>
+        </div>
       </>
     );
   }
