@@ -2,23 +2,31 @@ import React, { useState } from "react";
 import { login } from "../utils/api";
 // import""ogin.module.css";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const navigate = useNavigate()
 
-  const onLoad = (res) => {
-    console.log(res);
-    toast.success("Successfully logged in!");
-  };
+
 
   const onSubmit = () => {
     const data = {
-      email: email,
+      username: email,
       password: password,
     };
-
-    login(data, onLoad);
+    console.log(data);
+    login(data,(res,error=false)=>{
+      if(error){
+        toast.error(res)
+        return
+      }
+      console.log(res);
+      localStorage.setItem("token", res.token)
+      toast.success("Successfully Logged In!")
+      navigate("/")
+    })
   };
 
   return (
