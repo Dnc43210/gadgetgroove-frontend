@@ -1,5 +1,7 @@
 // import { useState } from "react";
+import { Link } from "react-router-dom";
 import Banner from "./Banner";
+import Layout from "../Layout";
 
 export default function Collections() {
   const categories = [
@@ -27,7 +29,7 @@ export default function Collections() {
   // console.log(zcategories)
 
   return (
-    <>
+    <Layout>
       {/* Banner as a Component */}
       <Banner />
 
@@ -43,7 +45,7 @@ export default function Collections() {
               {/* Featured Category Cards */}
 
               {categories.map((category, i) => (
-                <div key={"name" + i} className="group relative">
+                <Link key={"name" + i} className="group relative" to={"category/"+category.name.toLowerCase()}>
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
                     <img
                       src={category.src}
@@ -52,20 +54,19 @@ export default function Collections() {
                     />
                   </div>
                   <h3 className="mt-6 text-sm text-gray-500">
-                    <a href="/">
+                    
                       <span className="absolute inset-0" />
                       {category.name}
-                    </a>
                   </h3>
                   <p className="text-base font-semibold text-gray-900">
                     {category.name}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

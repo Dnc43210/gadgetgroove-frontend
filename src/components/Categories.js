@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import Layout from "../Layout";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -9,11 +11,11 @@ export default function Categories() {
       .then((data) => setCategories(data))
       .catch((error) => console.error("error fetching categories", error));
 
-    console.log(categories);
+    // console.log(categories);
   }, []);
 
   return (
-    <>
+    <Layout>
       <div className="bg-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6" >
           <div className="mx-auto max-w-2xl py-8 sm:py-2 lg:max-w-none lg:py-3">
@@ -23,7 +25,7 @@ export default function Categories() {
               {/* Category Cards */}
 
               {categories.map((category, i) => (
-                <div key={"name" + i} className="group relative">
+                <Link key={"name" + i} className="group relative py-3" to={"/category/"+category}>
                   <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-80 sm:h-64">
                     <img
                       src="https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -32,38 +34,19 @@ export default function Categories() {
                     />
                   </div>
                   <h3 className="mt-6 text-sm text-gray-500">
-                    <a href="/">
+                    
                       <span className="absolute inset-0" />
                       {category}
-                    </a>
                   </h3>
                   <p className="text-base font-semibold text-gray-900">
-                    {category}
+                    {category.charAt(0).toUpperCase()+category.slice(1).toLowerCase()}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
-{/* <div key={"name" + i} className="group relative">
-                  <div className="relative h-80 w-full overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 sm:h-64">
-                    <img
-                      src="https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      alt="laptop"
-                      className="h-full w-full object-cover object-center"
-                    />
-                  </div>
-                  <h3 className="mt-6 text-sm text-gray-500">
-                    <a href="/">
-                      <span className="absolute inset-0" />
-                      {category}
-                    </a>
-                  </h3>
-                  <p className="text-base font-semibold text-gray-900">
-                    {category}
-                  </p>
-                </div> */}
