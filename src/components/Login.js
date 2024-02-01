@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { login } from "../utils/api";
 // import""ogin.module.css";
 import toast from "react-hot-toast";
-import Layout from "../Layout";
 
 function Login() {
   const [email, setEmail] = useState();

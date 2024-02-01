@@ -8,6 +8,7 @@ import Categories from "./components/Categories";
 import SearchPage from "./components/SearchPage";
 import ProductList from "./components/ProductList";
 import Login from "./components/Login";
+import CartPage from "./components/CartPage";
 
 // const withMT = require("@material-tailwind/react/utils/withMT");
 
@@ -20,13 +21,11 @@ export default class App extends Component {
             <Route path="/" element={<Collections />}></Route>
             <Route path="/home" element={<Collections />}></Route>
             <Route path="/categories" element={<Categories />}></Route>
-            <Route
-              path="/category/:categoryName"
-              element={<ProductList />}
-            ></Route>
+            <Route path="/category/:categoryName" element={<ProductList />} ></Route>
             <Route path="/search" element={<SearchPage />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signin" element={<Signin />}></Route>
+            <Route path="/cart" element={<CartPage />}></Route>
           </Routes>
         </div>
       </>
