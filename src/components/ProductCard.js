@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ProductList from "./ProductList";
 
+let handleAddToCart = (prod) => {
+  console.log(prod);
+};
+
 export default function ProductCard(props) {
   const product = props.product;
   const handleAddToWishlist = () => {
@@ -39,7 +43,10 @@ export default function ProductCard(props) {
             <del>
               <p className="text-sm text-gray-600 cursor-auto ml-2">$199</p>
             </del>
-            <div className="flex items-center ml-auto bg-orange-500 px-3 py-3 rounded-2xl text-gray-100 ">
+            <div
+              className="flex items-center ml-auto bg-orange-500 px-3 py-3 rounded-2xl text-gray-100 "
+              onClick={handleAddToCart(product)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
