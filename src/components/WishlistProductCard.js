@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function WishlistProductCard(props) {
   const product = props.product;
+   // eslint-disable-next-line 
   const handleAddToWishlist = () => {
     let productList = JSON.parse(localStorage.getItem("ProductList"));
     if(productList){

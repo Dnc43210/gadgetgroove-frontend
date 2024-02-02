@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
+// import ProductCard from "./ProductCard";
 import WishlistProductCard from "./WishlistProductCard";
 
 function Wishlist() {
@@ -7,7 +7,7 @@ function Wishlist() {
   useEffect(() => {
     let productList = JSON.parse(localStorage.getItem("ProductList"));
     setProducts(productList);
-  });
+  },[]);
   return (
     <>
       <div class="w-full h-screen bg-white fixed top-0  shadow-2xl  transition-all duration-300 z-20 px-4 lg:px-[35px]">

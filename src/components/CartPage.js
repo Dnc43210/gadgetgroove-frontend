@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
-import { decreaseQuantity, increaseQuantity, readCartData, writeCartData } from "../utils/Cartupdate.js";
+import {
+  decreaseQuantity,
+  increaseQuantity,
+} from "../utils/Cartupdate.js";
+import { Link } from "react-router-dom";
 // let cart = {
 //   id: 1,
 //   products: [
@@ -46,8 +50,6 @@ import { decreaseQuantity, increaseQuantity, readCartData, writeCartData } from 
 //   totalQuantity: 10,
 // };
 
-
-
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [cart, setCart] = useState([]);
@@ -61,7 +63,6 @@ export default function CartPage() {
       })
       .catch((error) => console.error("error fetching Cart Items", error));
   }, []);
-
 
   return (
     <Layout>
@@ -87,7 +88,10 @@ export default function CartPage() {
                   </div>
                   <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                     <div class="flex items-center border-gray-100">
-                      <div class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={decreaseQuantity(item.id,1)}>
+                      <div
+                        class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                        onClick={decreaseQuantity(item.id, 1)}
+                      >
                         {" "}
                         -{" "}
                       </div>
@@ -97,7 +101,10 @@ export default function CartPage() {
                         value={item.quantity}
                         min="1"
                       />
-                      <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={increaseQuantity(item.id,1)}>
+                      <span
+                        class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                        onClick={increaseQuantity(item.id, 1)}
+                      >
                         {" "}
                         +{" "}
                       </span>
@@ -134,9 +141,11 @@ export default function CartPage() {
                 <p class="text-sm text-gray-700">including VAT</p>
               </div>
             </div>
-            <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
-              Check out
-            </button>
+            <Link to="/dispatch">
+              <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+                Check out
+              </button>
+            </Link>
           </div>
         </div>
       </div>

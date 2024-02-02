@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProductList from "./ProductList";
+// import ProductList from "./ProductList"; 
 
 let handleAddToCart = (prod) => {
   console.log(prod);

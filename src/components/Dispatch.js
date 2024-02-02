@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Dispatch() {
   return (
@@ -23,12 +24,12 @@ function Dispatch() {
             </p>
             <p> Have a great day! </p>
             <div class="py-10 text-center">
-              <a
-                href="#"
+              <Link
+                to="/"
                 class="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
               >
                 GO BACK
-              </a>
+              </Link>
             </div>
           </div>
         </div>
