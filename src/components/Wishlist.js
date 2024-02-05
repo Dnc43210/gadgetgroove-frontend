@@ -10,9 +10,9 @@ function Wishlist() {
   },[]);
   return (
     <>
-      <div class="w-full h-screen bg-white fixed top-0  shadow-2xl  transition-all duration-300 z-20 px-4 lg:px-[35px]">
+      <div class="w-full h-screen bg-white fixed top-0  shadow-2xl  transition-all duration-300 x-4 lg:px-[35px]">
         <div class="flex items-center justify-between border-b ">
-          <div class="uppercase text-sm font-semibold">Shopping Bag (0)</div>
+          <div class="uppercase text-2xl font-semibold">Wishlist</div>
         </div>
         <div className="h-screen flex justify-center overflow-scroll ">
         <div className="w-3/4 ">

@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import ProductList from "./ProductList";
+import ProductList from "./ProductList";
 
 export default function WishlistProductCard(props) {
   const product = props.product;
-   // eslint-disable-next-line 
+  //  eslint-disable-next-line 
+  let productList = JSON.parse(localStorage.getItem("ProductList"));
+  // localStorage.removeItem("productList")
   const handleAddToWishlist = () => {
-    let productList = JSON.parse(localStorage.getItem("ProductList"));
     if(productList){
     productList.unshift(product)
     localStorage.setItem('ProductList', JSON.stringify(productList));
@@ -40,7 +41,11 @@ export default function WishlistProductCard(props) {
             <del>
               <p className="text-sm text-gray-600 cursor-auto ml-2">$199</p>
             </del>
+
         
+          </div>
+          <div className="bg-blue-500 px-4 py-2 rounded-xl " onClick={localStorage.removeItem(productList[0])}>
+            Remove
           </div>
         </div>
       </a>
