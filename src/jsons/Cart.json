@@ -1,0 +1,44 @@
+{
+    "id": 1,
+    "products": [
+        {
+            "id": 59,
+            "title": "Spring and summershoes",
+            "price": 20,
+            "quantity": 3,
+            "thumbnail": "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg"
+        },
+        {
+            "id": 88,
+            "title": "TC Reusable Silicone Magic Washing Gloves",
+            "price": 29,
+            "quantity": 2,
+            "thumbnail": "https://cdn.dummyjson.com/product-images/88/thumbnail.jpg"
+        },
+        {
+            "id": 18,
+            "title": "Oil Free Moisturizer 100ml",
+            "price": 40,
+            "quantity": 2,
+            "thumbnail": "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg"
+        },
+        {
+            "id": 95,
+            "title": "Wholesale cargo lashing Belt",
+            "price": 930,
+            "quantity": 1,
+            "thumbnail": "https://cdn.dummyjson.com/product-images/95/thumbnail.jpg"
+        },
+        {
+            "id": 39,
+            "title": "Women Sweaters Wool",
+            "price": 600,
+            "quantity": 2,
+            "thumbnail": "https://cdn.dummyjson.com/product-images/39/thumbnail.jpg"
+        }
+    ],
+    "total": 2328,
+    "userId": 97,
+    "totalProducts": 5,
+    "totalQuantity": 10
+}
