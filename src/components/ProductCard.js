@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import ProductDescPage from "./ProductDescPage";
 // import ProductList from "./ProductList"; 
 
 let handleAddToCart = (prod) => {
@@ -22,12 +23,13 @@ export default function ProductCard(props) {
   
   }
   return (
-    <Link className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <Link to={"/product"} state={props.product}  className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
       <a href={product.href} key={"product" + 1}>
         <img
           src={product.images[0]}
           alt={product.imageAlt}
           className="h-80 w-72 object-cover rounded-t-xl"
+          
         />
         <div className="px-2 2 w-72">
           <span className="text-gray-400 mr-3 uppercase text-xs">
@@ -44,7 +46,7 @@ export default function ProductCard(props) {
               <p className="text-sm text-gray-600 cursor-auto ml-2">$199</p>
             </del>
             <div
-              className="flex items-center ml-auto bg-orange-500 px-3 2 rounded-2xl text-gray-100 "
+              className="flex items-center ml-auto bg-orange-500 px-3 2 rounded-lg text-gray-100 "
               onClick={handleAddToCart(product)}
             >
               <svg
