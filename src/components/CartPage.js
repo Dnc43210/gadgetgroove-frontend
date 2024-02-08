@@ -1,55 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
-import {
-  decreaseQuantity,
-  increaseQuantity,
-} from "../utils/Cartupdate.js";
+// import { decreaseQuantity, increaseQuantity } from "../utils/Cartupdate.js";
 import { Link } from "react-router-dom";
-// let cart = {
-//   id: 1,
-//   products: [
-//     {
-//       id: 59,
-//       title: "Spring and summershoes",
-//       price: 20,
-//       quantity: 3,
-//       thumbnail: "https://cdn.dummyjson.com/product-images/59/thumbnail.jpg",
-//     },
-//     {
-//       id: 88,
-//       title: "TC Reusable Silicone Magic Washing Gloves",
-//       price: 29,
-//       quantity: 2,
-//       thumbnail: "https://cdn.dummyjson.com/product-images/88/thumbnail.jpg",
-//     },
-//     {
-//       id: 18,
-//       title: "Oil Free Moisturizer 100ml",
-//       price: 40,
-//       quantity: 2,
-//       thumbnail: "https://cdn.dummyjson.com/product-images/18/thumbnail.jpg",
-//     },
-//     {
-//       id: 95,
-//       title: "Wholesale cargo lashing Belt",
-//       price: 930,
-//       quantity: 1,
-//       thumbnail: "https://cdn.dummyjson.com/product-images/95/thumbnail.jpg",
-//     },
-//     {
-//       id: 39,
-//       title: "Women Sweaters Wool",
-//       price: 600,
-//       quantity: 2,
-//       thumbnail: "https://cdn.dummyjson.com/product-images/39/thumbnail.jpg",
-//     },
-//   ],
-//   total: 2328,
-//   userId: 97,
-//   totalProducts: 5,
-//   totalQuantity: 10,
-// };
 
+const confirmedQuantity = (id,q) => {
+  console.log("item with id "+id+" is confirmed with "+q+" quantity")
+}
+const removeItem = (id) => {
+  console.log("item with id"+id+"is decreased")
+}
 export default function CartPage() {
   const [cartItems, setCartItems] = useState([]);
   const [cart, setCart] = useState([]);
@@ -64,6 +23,7 @@ export default function CartPage() {
       .catch((error) => console.error("error fetching Cart Items", error));
   }, []);
 
+  
   return (
     <Layout>
       <div class="bg-gray-100 pt-20 pb-20">
@@ -78,7 +38,7 @@ export default function CartPage() {
                   class="w-full rounded-lg sm:w-40"
                 />
                 <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-                  <div class="mt-5 sm:mt-0">
+                  <div class="mt-5 sm:mt-0 w-[30%]">
                     <h2 class="text-lg font-bold text-gray-900">
                       {item.title}
                     </h2>
@@ -88,26 +48,37 @@ export default function CartPage() {
                   </div>
                   <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                     <div class="flex items-center border-gray-100">
-                      <div
-                        class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                        onClick={decreaseQuantity(item.id, 1)}
+                      <button
+                        class="cursor-pointer rounded border bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                        onClick={()=>{removeItem(item.id)}}
                       >
-                        {" "}
-                        -{" "}
-                      </div>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-4 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                          />
+                        </svg>
+                      </button>
                       <input
-                        class="h-8 w-10 border bg-white text-center text-xs outline-none"
+                        class="h-8 w-10 border bg-white text-center text-xs outline-none rounded mx-1"
                         type="text"
-                        value={item.quantity}
+                        // value={item.quantity}
                         min="1"
                       />
-                      <span
-                        class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                        onClick={increaseQuantity(item.id, 1)}
+                      <button
+                        class="cursor-pointer rounded border bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                        onClick={()=>{confirmedQuantity(item.id, item.quantity)}}
                       >
-                        {" "}
-                        +{" "}
-                      </span>
+                        Confirm Quantity
+                      </button>
                     </div>
                   </div>
                 </div>

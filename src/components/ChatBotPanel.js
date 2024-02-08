@@ -9,21 +9,21 @@ import MessageParser from "./chatbot-utils/MessageParser";
 // import "./chatbot-utils/ChatBotPanel.css";
 
 export default function ChatBotPanel() {
-  let [offset, setOffset] = useState("[-400px]");
+  let [offset, setOffset] = useState("right-[-400px]");
   const toggleBotClick = () => {
-    if(offset === "[-400px]")
+    if(offset === "right-[-400px]")
     {
-        setOffset("4");
+        setOffset("right-4");
     }
     else{
-        setOffset("[-400px]")
+        setOffset("right-[-400px]")
     }
   };
   return (
     <>
       <div
         className={
-          "z-20 fixed top-4 p-4 shadow-lg px-0 py-0 right-" + offset + " transition-transform ease-in-out duration-500"
+          "z-20 fixed top-4 p-4 shadow-lg px-0 py-0 "+offset+" transition-transform ease-in-out duration-500"
         }
       >
         {/* <ChatBot
