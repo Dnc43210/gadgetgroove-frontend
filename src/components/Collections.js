@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import Banner from "./Banner";
 import Layout from "../Layout";
+import ProductModal from "./ProductModal";
 
 export default function Collections() {
   const categories = [
@@ -32,6 +33,7 @@ export default function Collections() {
     <Layout>
       {/* Banner as a Component */}
       <Banner />
+      <ProductModal/>
 
       {/* Featured Category Collections */}
       <div className="bg-gray-100">
