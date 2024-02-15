@@ -134,6 +134,7 @@ export default function NavigationBar() {
                           
                           <h1 onClick={()=>{
                             localStorage.removeItem("token", navigate("/"))
+                            localStorage.removeItem("itemCount")
                             toast.success("Successfully Logged Out!")
                           }}
                             to="/"

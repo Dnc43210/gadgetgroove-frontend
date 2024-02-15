@@ -1,4 +1,3 @@
-// in config.js
 import { createChatBotMessage } from 'react-chatbot-kit';
 
 const botName = 'GGBot';
