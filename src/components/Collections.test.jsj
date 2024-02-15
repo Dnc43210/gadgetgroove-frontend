@@ -1,0 +1,21 @@
+import { render, screen } from '@testing-library/react';
+import Collections from './Collections'; // Adjust the import path as necessary
+import '@testing-library/jest-dom';
+// Mock react-router-dom for the Link component
+jest.mock('react-router-dom', () => ({
+ Link: ({ children }) => children,
+}));
+describe('Collections Component', () => {
+ it('renders categories correctly', () => {
+   render(<Collections />);
+   // Assert that each category's name is rendered
+   expect(screen.getByText('Smartphones')).toBeInTheDocument();
+   expect(screen.getByText('Laptops')).toBeInTheDocument();
+   expect(screen.getByText('Accessories')).toBeInTheDocument();
+   // If you want to be more thorough, you can also check for images being rendered
+   // Note: This assumes alt text is used as "category name" in your component
+   expect(screen.getByAltText('Smartphones')).toHaveAttribute('src', expect.stringContaining('photo-1536846670933-ce6eef8dfe89'));
+   expect(screen.getByAltText('Laptops')).toHaveAttribute('src', expect.stringContaining('photo-1629131726692-1accd0c53ce0'));
+   expect(screen.getByAltText('Accessories')).toHaveAttribute('src', expect.stringContaining('photo-1515940175183-6798529cb860'));
+ });
+});

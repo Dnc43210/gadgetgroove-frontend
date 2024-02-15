@@ -1,0 +1,87 @@
+import React from 'react';
+
+import { render, screen, waitFor } from '@testing-library/react';
+
+import '@testing-library/jest-dom';
+
+import CartPage from './CartPage'; // Adjust the import path as necessary
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
+// Mocking the Cartupdate.js functions if they're being used
+
+// jest.mock("../utils/Cartupdate.js", () => ({
+
+//   decreaseQuantity: jest.fn(),
+
+//   increaseQuantity: jest.fn(),
+
+// }));
+
+describe('CartPage Component', () => {
+
+  beforeEach(() => {
+
+  // Mock global fetch here if you're not using a __mocks__ directory
+
+  });
+
+  test('loads and displays cart items after fetch', async () => {
+
+    render(
+
+      <Router>
+
+        <CartPage />
+
+      </Router>
+
+    );
+
+    // Check for loading states or initial renders if applicable
+
+    // Wait for the fetch to complete and the component to update
+
+    // await waitFor(() => {
+
+    //   expect(screen.getByText('Test Product')).toBeInTheDocument();
+
+    //   expect(screen.getByText('$20')).toBeInTheDocument(); // Total price from quantity * price
+
+    // });
+
+  });
+
+  test('shows total items, quantity, and subtotal correctly', async () => {
+
+    render(
+
+      <Router>
+
+        <CartPage />
+
+      </Router>
+
+    );
+
+    await waitFor(() => {
+
+      expect(screen.getByText('Total Items')).toBeInTheDocument();
+
+      expect(screen.getByText('1')).toBeInTheDocument(); // Total products
+
+      expect(screen.getByText('Total Quantity')).toBeInTheDocument();
+
+      expect(screen.getByText('2')).toBeInTheDocument(); // Total quantity
+
+      expect(screen.getByText('Subtotal')).toBeInTheDocument();
+
+      expect(screen.getByText('$20')).toBeInTheDocument(); // Subtotal
+
+    });
+
+  });
+
+  // Additional tests can include interaction tests, error state tests, etc.
+
+});

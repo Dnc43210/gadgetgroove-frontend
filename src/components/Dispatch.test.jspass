@@ -1,0 +1,23 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import Dispatch from './Dispatch'; // Adjust the import path as necessary
+describe('Dispatch Component', () => {
+ it('renders successfully with correct text', () => {
+   render(
+<BrowserRouter>
+<Dispatch />
+</BrowserRouter>
+   );
+   // Check for the success message
+   expect(screen.getByText('Payment Done!')).toBeInTheDocument();
+   // Check for the thank you note
+   expect(screen.getByText('Thank you for Shopping with US ♥.')).toBeInTheDocument();
+   expect(screen.getByText('Have a great day!')).toBeInTheDocument();
+   // Check for the "GO BACK" link
+   const goBackLink = screen.getByText('GO BACK');
+   expect(goBackLink).toBeInTheDocument();
+   expect(goBackLink).toHaveClass('px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3');
+   expect(goBackLink.closest('a')).toHaveAttribute('href', '/');
+ });
+});

@@ -1,0 +1,29 @@
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import SearchPage from './SearchPage'; // Adjust the import path as necessary
+import fetchMock from 'jest-fetch-mock';
+fetchMock.enableMocks();
+beforeEach(() => {
+ fetchMock.resetMocks();
+});
+describe('SearchPage Component', () => {
+ test('renders SearchPage and performs a search', async () => {
+   fetchMock.mockResponseOnce(JSON.stringify({
+     products: [{ id: 1, title: 'Test Product', price: 100, description: 'This is a test product' }],
+   }));
+   render(<SearchPage />);
+   // Simulate user typing a search query
+   fireEvent.change(screen.getByPlaceholderText('Search the store...'), {
+     target: { value: 'Test' },
+   });
+   // Simulate search button click or form submission if applicable
+   // Since this example directly fetches on input change, we'll immediately check for the fetch call
+   expect(fetchMock).toHaveBeenCalledWith("https://dummyjson.com/products/search?q=Test");
+   // Wait for the component to re-render with fetched data
+   await waitFor(() => {
+     expect(screen.getByText('Test Product')).toBeInTheDocument();
+   });
+ });
+ // Additional tests can be written to cover other functionalities and edge cases
+});

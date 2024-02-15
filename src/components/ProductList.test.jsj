@@ -1,0 +1,34 @@
+import React from 'react';
+import { render, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { BrowserRouter as Router } from 'react-router-dom';
+import ProductList from './ProductList'; // Adjust the import path as necessary
+// Mock useParams
+jest.mock('react-router-dom', () => ({
+ ...jest.requireActual('react-router-dom'), // Import and retain the original functionalities
+ useParams: () => ({
+   categoryName: 'electronics',
+ }),
+}));
+describe('ProductList', () => {
+ beforeEach(() => {
+   fetch.resetMocks();
+ });
+ it('fetches products and displays them', async () => {
+   const mockProducts = [
+     { id: 1, title: 'Product 1', images: ['url1'], price: '100', brand: 'Brand1' },
+     { id: 2, title: 'Product 2', images: ['url2'], price: '200', brand: 'Brand2' },
+   ];
+   fetch.mockResponseOnce(JSON.stringify({ products: mockProducts }));
+   const { getByText } = render(
+<Router>
+<ProductList />
+</Router>
+   );
+   await waitFor(() => {
+     expect(getByText('Product 1')).toBeInTheDocument();
+     expect(getByText('Product 2')).toBeInTheDocument();
+   });
+ });
+ // Additional tests can go here
+});

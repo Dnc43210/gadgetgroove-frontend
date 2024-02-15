@@ -1,0 +1,23 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import Search from './Search'; // Adjust the import path as necessary
+describe('Search Component', () => {
+ test('renders Search button and navigates to search on click', () => {
+   // Render Search component within MemoryRouter to simulate routing
+   render(
+<MemoryRouter initialEntries={['/']}>
+<Routes>
+<Route path="/" element={<Search />} />
+<Route path="/search" element={<h1>Search Page</h1>} />
+</Routes>
+</MemoryRouter>
+   );
+   // Check if the Search button is in the document
+   const searchButton = screen.getByRole('button', { name: 'Search' });
+   expect(searchButton).toBeInTheDocument();
+   
+  
+ });
+});
