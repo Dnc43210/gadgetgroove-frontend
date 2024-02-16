@@ -16,6 +16,7 @@ import CartPage from "./components/CartPage";
 // import Wishlist from "./components/Wishlist";
 import Dispatch from "./components/Dispatch";
 import Wishlist from "./components/Wishlist";
+import Wishlist2 from "./components/Wishlist2";
 import InvoiceModal from "./components/Invoice";
 import Graph from "./components/Graph";
 
