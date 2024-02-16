@@ -1,18 +1,28 @@
-import { createChatBotMessage } from 'react-chatbot-kit';
-
-const botName = 'GGBot';
+// Config starter code
+import React from "react";
+import { createChatBotMessage } from "react-chatbot-kit";
+import BotAvatar from "./BotAvatar";
 
 const config = {
-  initialMessages: [createChatBotMessage(`Hi! I'm ${botName}`),createChatBotMessage("Please provide your name :)")],
-  botName: botName,
+  botName: "Chatbot",
+  //overwrite the existing style
+  customComponents: {
+    botAvatar: (props) => <BotAvatar {...props} />,
+  },
+  //overwrite the existing style
   customStyles: {
     botMessageBox: {
-      backgroundColor: '#374151',
+      backgroundColor: "#008b8b",
     },
     chatButton: {
-      backgroundColor: '#5ccc9d',
+      backgroundColor: "#008b8b",
     },
   },
+  initialMessages: [
+    createChatBotMessage(
+      " Hello, please type 'Help' to start the conversation"
+    ),
+  ],
 };
 
 export default config;
