@@ -1,0 +1,32 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { Footer } from './Footer';
+// Mock the current year to ensure the test is not dependent on when it's run
+jest.useFakeTimers().setSystemTime(new Date('2024-02-09'));
+describe('Footer', () => {
+ it('renders the footer with the correct year', () => {
+   render(<Footer />);
+   const currentYear = new Date().getFullYear();
+   expect(screen.getByText(`© ${currentYear} Gadget Groove. All Rights Reserved.`)).toBeInTheDocument();
+ });
+ it('contains the correct number of sections', () => {
+   render(<Footer />);
+   // Assuming your SITEMAP has 3 sections
+   const sections = screen.getAllByRole('heading');
+   expect(sections).toHaveLength(3);
+ });
+ it('contains the expected links', () => {
+   render(<Footer />);
+   // Check for a specific link in your SITEMAP
+   expect(screen.getByText('About Us')).toBeInTheDocument();
+   expect(screen.getByText('Contact Us')).toBeInTheDocument();
+   expect(screen.getByText('Blog')).toBeInTheDocument();
+   // Add more assertions as needed for other links
+ });
+//  it('contains social media icons', () => {
+//    render(<Footer />);
+//    // Assuming you have 4 social media links
+//    const socialMediaLinks = screen.getAllByRole('link');
+//    expect(socialMediaLinks).toHaveLength(4); // Adjust the number based on your actual links
+//  });
+});

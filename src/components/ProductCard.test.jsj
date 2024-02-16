@@ -1,0 +1,45 @@
+import React from 'react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import ProductCard from './ProductCard'; // Adjust the import path as necessary
+// Mock product data
+const mockProduct = {
+ href: '#',
+ images: ['image-src'],
+ imageAlt: 'Test Image',
+ brand: 'Test Brand',
+ title: 'Test Title',
+ price: '100'
+};
+// Mock localStorage
+const localStorageMock = (() => {
+ let store = {};
+ return {
+   getItem(key) {
+     return store[key] || null;
+   },
+   setItem(key, value) {
+     store[key] = value.toString();
+   },
+   clear() {
+     store = {};
+   }
+ };
+})();
+Object.defineProperty(window, 'localStorage', {
+ value: localStorageMock
+});
+describe('ProductCard', () => {
+ afterEach(cleanup); // Cleans up the DOM after each test
+ it('renders without crashing', () => {
+   const { getByText } = render(<ProductCard product={mockProduct} />);
+   expect(getByText(mockProduct.title)).toBeInTheDocument();
+ });
+ it('adds product to wishlist on button click', () => {
+   const { getByText } = render(<ProductCard product={mockProduct} />);
+   fireEvent.click(getByText('♡')); // Assuming this is your wishlist button
+   const productList = JSON.parse(localStorage.getItem('ProductList'));
+   expect(productList).toHaveLength(1);
+   expect(productList[0]).toEqual(mockProduct);
+ });
+});

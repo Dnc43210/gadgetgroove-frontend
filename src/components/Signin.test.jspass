@@ -1,0 +1,27 @@
+import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Signin from './Signin'; 
+describe('Signin Component', () => {
+ test('renders Signin component and toggles UI on button click', () => {
+   render(<Signin />);
+   // Check if the initial UI is rendered as expected
+   expect(screen.getByText("Sign In or Register")).toBeInTheDocument();
+   expect(screen.getByLabelText("Email address")).toBeInTheDocument();
+   expect(screen.queryByLabelText("Password")).not.toBeInTheDocument(); // Password field should not be there initially
+   // Mock user input for email
+   fireEvent.change(screen.getByLabelText("Email address"), {
+     target: { value: 'test@example.com' },
+   });
+   // Simulate clicking the "Proceed with this Email" button
+   fireEvent.click(screen.getByText("Proceed with this Email >>"));
+   // After button click, the UI should update
+   // Since the actual email forwarding logic involves checking the document element,
+   // which isn't directly testable here, 
+   expect(screen.getByText("SignIn")).toBeInTheDocument();
+   expect(screen.getByLabelText("Password")).toBeInTheDocument(); // Now, the Password field should be visible.
+   
+   expect(screen.getByText("Sign In")).toBeInTheDocument(); // The sign-in/registration button based on the isRegistered state
+ });
+
+});

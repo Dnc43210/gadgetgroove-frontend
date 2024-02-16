@@ -1,0 +1,19 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Banner from './Banner'; // Adjust the import path as necessary
+describe('Banner', () => {
+ it('renders correctly', () => {
+   render(<Banner />);
+   const images = screen.getAllByRole('img');
+   expect(images).toHaveLength(3); // Checks if there are three images
+ });
+ it('has correct alt text for each image', () => {
+   render(<Banner />);
+   const images = screen.getAllByRole('img');
+   images.forEach((img, index) => {
+     expect(img).toHaveAttribute('alt', `banner${index}`); // it will check the indexing
+   });
+ });
+
+});

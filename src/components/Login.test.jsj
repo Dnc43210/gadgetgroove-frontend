@@ -1,0 +1,61 @@
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Login from './Login';
+import { login } from '../utils/api';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+// Mocking the external modules
+jest.mock('../utils/api');
+jest.mock('react-hot-toast');
+jest.mock('react-router-dom', () => ({
+ ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
+ useNavigate: jest.fn(),
+}));
+describe('Login Component', () => {
+ // Setup common variables
+ let emailInput, passwordInput, loginButton;
+ const mockedNavigate = useNavigate();
+ beforeEach(() => {
+   // Render the Login component before each test
+   render(<Login title="Login" />);
+   // Initialize commonly accessed elements
+   emailInput = screen.getByPlaceholderText('Rishi');
+   passwordInput = screen.getByPlaceholderText(/password/i);
+   loginButton = screen.getByText(/login/i);
+ });
+ it('should allow typing in the email and password fields', () => {
+   // Simulate user typing
+   userEvent.type(emailInput, 'test@example.com');
+   userEvent.type(passwordInput, 'password123');
+   // Assert that the inputs contain what the user has typed
+   expect(emailInput.value).toBe('test@example.com');
+   expect(passwordInput.value).toBe('password123');
+ });
+ it('should display a success toast and navigate to home on successful login', async () => {
+   // Mock the API call to simulate a successful login
+   login.mockImplementation((_, callback) => callback({ token: 'fakeToken' }, false));
+   // Simulate user actions
+   userEvent.type(emailInput, 'test@example.com');
+   userEvent.type(passwordInput, 'password123');
+   fireEvent.click(loginButton);
+   // Assert that the success toast was shown and navigation was called
+   expect(toast.success).toHaveBeenCalledWith('Successfully Logged In!');
+   expect(mockedNavigate).toHaveBeenCalledWith('/');
+   expect(localStorage.getItem('token')).toBe('fakeToken');
+ });
+ it('should display an error toast on failed login', () => {
+   // Mock the API call to simulate a failed login
+   login.mockImplementation((_, callback) => callback('Login failed', true));
+   // Simulate user actions
+   userEvent.type(emailInput, 'wrong@example.com');
+   userEvent.type(passwordInput, 'wrongPassword');
+   fireEvent.click(loginButton);
+   // Assert that the error toast was shown
+   expect(toast.error).toHaveBeenCalledWith('Login failed');
+ });
+ afterEach(() => {
+   // Clear all mocks after each test
+   jest.clearAllMocks();
+ });
+});

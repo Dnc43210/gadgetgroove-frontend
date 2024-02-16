@@ -1,0 +1,32 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Wishlist from './Wishlist'; // Adjust the import path as necessary
+// Mock WishlistProductCard component to simplify testing
+jest.mock('./WishlistProductCard', () => ({ product }) => <div>{product.name}</div>);
+describe('Wishlist Component', () => {
+ // Mocking localStorage
+ beforeEach(() => {
+   const productList = JSON.stringify([
+     { name: 'Product 1' },
+     { name: 'Product 2' },
+   ]);
+   Storage.prototype.getItem = jest.fn(() => productList);
+ });
+ afterEach(() => {
+   jest.resetAllMocks();
+ });
+ test('renders Wishlist and displays products from localStorage', () => {
+   render(<Wishlist />);
+   // Verify that the title "Wishlist" is rendered
+   expect(screen.getByText('Wishlist')).toBeInTheDocument();
+   // Verify that products from the mocked localStorage are rendered
+   expect(screen.getByText('Product 1')).toBeInTheDocument();
+   expect(screen.getByText('Product 2')).toBeInTheDocument();
+   // Optional: Check for other static elements in the component
+   expect(screen.getByText('Subtotal:')).toBeInTheDocument();
+   expect(screen.getByText('View Cart')).toBeInTheDocument();
+   expect(screen.getByText('Checkout')).toBeInTheDocument();
+ });
+
+});
