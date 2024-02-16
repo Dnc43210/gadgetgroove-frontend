@@ -8,7 +8,6 @@ function Layout({children}) {
     <div>
       <NavigationBar/>
       {children}
-      <ChatBotPanel/>
       <Footer/>
     </div>
   )

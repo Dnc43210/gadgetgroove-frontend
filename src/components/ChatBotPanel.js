@@ -1,84 +1,3 @@
-// import React, { useState } from "react";
-// import ChatBot from "react-simple-chatbot";
-
-// import Chatbot from "react-chatbot-kit";
-// import "react-chatbot-kit/build/main.css";
-// import config from "./chatbot-utils/config";
-// import ActionProvider from "./chatbot-utils/ActionProvider";
-// import MessageParser from "./chatbot-utils/MessageParser";
-// // import "./chatbot-utils/ChatBotPanel.css";
-
-// export default function ChatBotPanel() {
-//   let [offset, setOffset] = useState("right-4");
-//   const toggleBotClick = () => {
-//     if (offset === "right-[-400px]") {
-//       setOffset("right-4");
-//     } else {
-//       setOffset("right-[-400px]");
-//     }
-//   };
-//   return (
-//     <>
-//       <div
-//         className={
-//           "z-20 fixed top-4 p-4 shadow-lg px-0 py-0 " +
-//           offset +
-//           " transition-transform ease-in-out duration-500"
-//         }
-//       >
-//         <ChatBot
-//         steps={[
-//           {
-//             id: "1",
-//             message: "What is your name?",
-//             trigger: "2",
-//           },
-//           {
-//             id: "2",
-//             user: true,
-//             trigger: "3",
-//           },
-//           {
-//             id: "3",
-//             message: "Hi {previousValue}, nice to meet you!",
-//             end: true,
-//           },
-//         ]}
-//       ></ChatBot>
-
-//         {/* <Chatbot
-//           config={config}
-//           messageParser={MessageParser}
-//           actionProvider={ActionProvider}
-//         ></Chatbot> */}
-//       </div>
-//       <div
-//         class="fixed bottom-4 right-4 inline-flex items-center justify-center text-sm font-medium border rounded-full w-16 h-16 bg-gray-800 hover:bg-gray-700 m-0 cursor-pointer border-gray-200 bg-none p-0 normal-case leading-5 hover:text-gray-900"
-//         onClick={toggleBotClick}
-//       >
-//         <svg
-//           xmlns=" http://www.w3.org/2000/svg"
-//           width="30"
-//           height="40"
-//           viewBox="0 0 24 24"
-//           fill="none"
-//           stroke="currentColor"
-//           stroke-width="2"
-//           stroke-linecap="round"
-//           stroke-linejoin="round"
-//           class="text-white block border-gray-200 align-middle"
-//         >
-//           <path
-//             d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"
-//             class="border-gray-200"
-//           ></path>
-//         </svg>
-//       </div>
-//     </>
-//   );
-// }
-
-
 import React, { useState } from "react";
 import ChatBot from "react-simple-chatbot";
 
@@ -87,7 +6,7 @@ import "react-chatbot-kit/build/main.css";
 import config from "./chatbot-utils/config";
 import ActionProvider from "./chatbot-utils/ActionProvider";
 import MessageParser from "./chatbot-utils/MessageParser";
-// import "./chatbot-utils/ChatBotPanel.css";
+import "./chatbot-utils/ChatBotPanel.css";
 
 export default function ChatBotPanel() {
   let [offset, setOffset] = useState("[-400px]");
@@ -104,10 +23,10 @@ export default function ChatBotPanel() {
     <>
       <div
         className={
-          "z-20 fixed top-4 p-4 shadow-lg px-0 py-0 right-" + offset + " transition-transform ease-in-out duration-500"
+          "z-20 fixed top-4 p-4 shadow-lg px-0 py-0 right-" + offset + " transition-all duration-300"
         }
       >
-        {/* <ChatBot
+        <ChatBot duration-300
         steps={[
           {
             id: "1",
@@ -125,13 +44,13 @@ export default function ChatBotPanel() {
             end: true,
           },
         ]}
-      ></ChatBot> */}
+      ></ChatBot>
 
-        <Chatbot
+        {/* <Chatbot
           config={config}
           messageParser={MessageParser}
           actionProvider={ActionProvider}
-        ></Chatbot>
+        ></Chatbot> */}
       </div>
       <button
         class="fixed bottom-4 right-4 inline-flex items-center justify-center text-sm font-medium border rounded-full w-16 h-16 bg-gray-800 hover:bg-gray-700 m-0 cursor-pointer border-gray-200 bg-none p-0 normal-case leading-5 hover:text-gray-900"

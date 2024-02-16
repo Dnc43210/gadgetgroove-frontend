@@ -22,11 +22,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
-
 export default function NavigationBar() {
-  const token = localStorage.getItem("token")
-  const navigate = useNavigate()
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   return (
     <Disclosure as="nav" className="bg-gray-800 shadow-lg">
@@ -70,6 +68,29 @@ export default function NavigationBar() {
               </div>
 
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <Link to="/wishlist">
+                  <button
+                    type="button"
+                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">View notifications</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6 mx-3"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                      />
+                    </svg>
+                  </button>
+                </Link>
                 <Link to="/cart">
                   <button
                     type="button"
@@ -129,37 +150,40 @@ export default function NavigationBar() {
                           </a>
                         )}
                       </Menu.Item> */}
-                      {token?<Menu.Item>
-                        {({ active }) => (
-                          
-                          <h1 onClick={()=>{
-                            localStorage.removeItem("token", navigate("/"))
-                            localStorage.removeItem("itemCount")
-                            toast.success("Successfully Logged Out!")
-                          }}
-                            to="/"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </h1>
-                        )}
-                      </Menu.Item>:<Menu.Item>
-                        {({ active }) => (
-                          
-                          <Link
-                            to="/login"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Login
-                          </Link>
-                        )}
-                      </Menu.Item>}
+                      {token ? (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <h1
+                              onClick={() => {
+                                localStorage.removeItem("token", navigate("/"));
+                                localStorage.removeItem("itemCount");
+                                toast.success("Successfully Logged Out!");
+                              }}
+                              to="/"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Sign out
+                            </h1>
+                          )}
+                        </Menu.Item>
+                      ) : (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              to="/login"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Login
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      )}
                       {/* <Menu.Item>
                         {({ active }) => (
                           <Link

@@ -21,17 +21,20 @@ export default function ProductCard(props) {
     }
   };
   return (
-    <Link
+    <div
       to={"/product"}
       state={props.product}
       className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
     >
       <a href={product.href} key={"product" + 1}>
+      <Link      to={"/product"}
+      state={props.product}>
         <img
           src={product.images[0]}
           alt={product.imageAlt}
           className="h-80 w-72 object-cover rounded-t-xl"
         />
+        </Link>
         <div className="px-2 2 w-72">
           <span className="text-gray-400 mr-3 uppercase text-xs">
             {product.brand}
@@ -43,8 +46,8 @@ export default function ProductCard(props) {
             <p className="text-lg font-semibold text-black cursor-auto my-3">
               {"$" + product.price}
             </p>
-            <div
-              className="flex items-center ml-auto mr-1 bg-orange-500 px-3 py-2 rounded-lg text-gray-100 "
+            <button
+              className="flex items-center ml-auto mr-1 bg-orange-500 hover:bg-orange-600 px-3 py-2 rounded-lg text-gray-100 "
               onClick={handleAddToCart(product)}
             >
               <svg
@@ -62,10 +65,10 @@ export default function ProductCard(props) {
                 />
               </svg>
               &nbsp;&nbsp;Add to Cart
-            </div>
-            <div
+            </button>
+            <button
               onClick={handleAddToWishlist}
-              className="flex items-center justify-center bg-orange-500 px-3 py-2 rounded-lg text-gray-100 "
+              className="flex items-center justify-center bg-orange-500 hover:bg-orange-600 px-3 py-2 rounded-lg text-gray-100 "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,11 +84,10 @@ export default function ProductCard(props) {
                   d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
                 />
               </svg>
-            </div>
+            </button>
           </div>
-          
         </div>
       </a>
-    </Link>
+    </div>
   );
 }

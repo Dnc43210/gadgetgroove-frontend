@@ -28,6 +28,7 @@
 }
 
 .react-chatbot-kit-chat-btn-send {
+    background-color: rgb(255 90 31);
 }
 
 .react-chatbot-kit-chat-btn-send-icon {
@@ -47,7 +48,7 @@
 
 .react-chatbot-kit-chat-bot-message {
     margin-left: 0px;
-    color: rgb(17 24 39 / var(--tw-text-opacity));
+    color: #d9dffc;
     background-color: rgb(249 250 251);
     border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }

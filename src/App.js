@@ -13,10 +13,11 @@ import ProductDescPage from "./components/ProductDescPage";
 import Payment from "./components/Payment";
 // import Charts from "./components/charts";
 import CartPage from "./components/CartPage";
-// import Wishlist from "./components/Wishlist";
+import Wishlist from "./components/Wishlist";
 import Dispatch from "./components/Dispatch";
 import Wishlist2 from "./components/Wishlist2";
 import Invoice from "./components/Invoice"
+import ChatBotPanel from "./components/ChatBotPanel";
 
 // const withMT = require("@material-tailwind/react/utils/withMT");
 
@@ -29,7 +30,7 @@ export default class App extends Component {
             <Route path="/" element={<Collections />}></Route>
             <Route path="/home" element={<Collections />}></Route>
             <Route path="/categories" element={<Categories />}></Route>
-            <Route path="/wishlist" element={<Wishlist2 />}></Route>
+            <Route path="/wishlist" element={<Wishlist />}></Route>
             <Route path="/category/:categoryName" element={<ProductList />} ></Route>
             <Route path="/search" element={<SearchPage />}></Route>
             <Route path="/login" element={<Login />}></Route>
@@ -44,6 +45,8 @@ export default class App extends Component {
             
             
           </Routes>
+          
+      <ChatBotPanel/>
         </div>
       </>
     );

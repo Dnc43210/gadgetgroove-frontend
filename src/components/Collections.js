@@ -33,7 +33,7 @@ export default function Collections() {
     <Layout>
       {/* Banner as a Component */}
       <Banner />
-      <ProductModal/>
+      {/* <ProductModal/> */}
 
       {/* Featured Category Collections */}
       <div className="bg-gray-100">
