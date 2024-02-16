@@ -15,7 +15,6 @@
     "flowbite": "^2.2.1",
     "flowbite-react": "^0.7.2",
     "html-to-image": "^1.11.11",
-    "jest-fetch-mock": "^3.0.3",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -58,6 +57,11 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "fetch-mock": "^9.11.0",
+    "jest-fetch-mock": "^3.0.3",
     "tailwindcss": "^3.4.1"
+  },
+  "jest": {
+    "setupFiles" : ["jest-fetch-mock"]
   }
+
 }
