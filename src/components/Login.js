@@ -29,8 +29,8 @@ function Login() {
 
   return (
     <>
-      <div className="p-[50px] h-[100vh] flex flex-col justify-center items-center bg-gray-100">
-        <div className="h-min-[90%] p-[20px] shadow-md rounded-xl flex flex-col col-4 bg-white ">
+      <div className="p-[50px] h-[100vh] w-full flex flex-col justify-center items-center bg-gray-100">
+        <div className="h-min-[90%] p-[20px] md:w-1/4 lg:w-1/3 shadow-md rounded-xl flex flex-col bg-white ">
           <div className="pb-[20px]">
             <h1 className="font-semibold text-3xl text-orange-500">
               Hey missed you,
@@ -67,7 +67,7 @@ function Login() {
           <div>New to Gadgetgroove?</div>
           <hr className="w-full"></hr>
         </h1>
-        <div className="bg-white h-min-[90%] p-[20px] shadow-md rounded-xl flex flex-col col-4 font-semibold justify-center space-y-2 py-4">
+        <div className="bg-white h-min-[90%] p-[20px] md:w-1/4 lg:w-1/3 shadow-md rounded-xl flex flex-col font-semibold justify-center space-y-2 py-4">
           <div className="a">
             Create your GadgetGroove Account{" "}
             <Link className="text-orange-500" to={"/signup"}>

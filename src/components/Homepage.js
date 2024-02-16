@@ -22,7 +22,7 @@
 //         <Route path="/login" element={<Login />}></Route>
 //       </>
 
-//       <Footer />
+//       <Footer />`
 //     </div>
 //   );
 // }

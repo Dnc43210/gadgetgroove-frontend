@@ -5,6 +5,7 @@ import {
   increaseQuantity,
 } from "../utils/Cartupdate.js";
 import { Link } from "react-router-dom";
+import Graph from "./Graph.js";
 // let cart = {
 //   id: 1,
 //   products: [
@@ -71,7 +72,8 @@ export default function CartPage() {
         <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div class="rounded-lg md:w-2/3">
             {cartItems.map((item, i) => (
-              <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+              <div className="flex space-x-2">
+                <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
                 <img
                   src={item.thumbnail}
                   alt={"product-image" + i}
@@ -111,6 +113,10 @@ export default function CartPage() {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="a">
+              <Graph/>
+              </div>
               </div>
             ))}
           </div>

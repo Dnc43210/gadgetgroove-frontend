@@ -22,11 +22,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
-
 export default function NavigationBar() {
-  const token = localStorage.getItem("token")
-  const navigate = useNavigate()
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   return (
     <Disclosure as="nav" className="bg-gray-800 shadow-lg">
@@ -129,36 +127,39 @@ export default function NavigationBar() {
                           </a>
                         )}
                       </Menu.Item> */}
-                      {token?<Menu.Item>
-                        {({ active }) => (
-                          
-                          <h1 onClick={()=>{
-                            localStorage.removeItem("token", navigate("/"))
-                            toast.success("Successfully Logged Out!")
-                          }}
-                            to="/"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Sign out
-                          </h1>
-                        )}
-                      </Menu.Item>:<Menu.Item>
-                        {({ active }) => (
-                          
-                          <Link
-                            to="/login"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Login
-                          </Link>
-                        )}
-                      </Menu.Item>}
+                      {token ? (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <h1
+                              onClick={() => {
+                                localStorage.removeItem("token", navigate("/"));
+                                toast.success("Successfully Logged Out!");
+                              }}
+                              to="/"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Sign out
+                            </h1>
+                          )}
+                        </Menu.Item>
+                      ) : (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link
+                              to="/login"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Login
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      )}
                       {/* <Menu.Item>
                         {({ active }) => (
                           <Link

@@ -16,6 +16,7 @@ import CartPage from "./components/CartPage";
 // import Wishlist from "./components/Wishlist";
 import Dispatch from "./components/Dispatch";
 import Wishlist2 from "./components/Wishlist2";
+import Graph from "./components/Graph";
 
 // const withMT = require("@material-tailwind/react/utils/withMT");
 
@@ -39,6 +40,7 @@ export default class App extends Component {
             {/* <Route path="/charts" element={Charts}></Route> */}
             <Route path="/cart" element={<CartPage />}></Route>
             <Route path="/dispatch" element={<Dispatch />}></Route>
+            <Route path="/graph" element={<Graph/>}></Route>
             
           </Routes>
         </div>

@@ -35,14 +35,14 @@ function Signup() {
 
   return (
     <div className="p-[50px] h-[100vh] flex flex-col justify-center items-center bg-gray-100">
-      <div className=" h-min-[90%] p-[20px] shadow-md rounded-xl flex flex-col col-4 bg-white">
+      <div className=" h-min-[90%] p-[20px] shadow-md md:w-1/4 lg:w-1/3 rounded-xl flex flex-col bg-white">
         <div className="pb-[20px]">
           <h1 className="font-semibold text-3xl text-orange-500">Hello,</h1>
           <h1 className="font-semibold">Start a new Journey!</h1>
         </div>
 
         <div className="font-semibold">
-          <h3 className="pb-2">First Name</h3>
+          <h3 className="pb-1">First Name</h3>
           <input
             className="bg-transparent w-full mb-[20px] px-4 py-2 rounded-xl"
             type="text"
@@ -52,7 +52,7 @@ function Signup() {
         </div>
 
         <div className="font-semibold">
-          <h3 className="pb-2">Last Name</h3>
+          <h3 className="pb-1">Last Name</h3>
           <input
             className="bg-transparent w-full mb-[20px] px-4 py-2 rounded-xl"
             type="text"
@@ -62,7 +62,7 @@ function Signup() {
         </div>
 
         <div className="font-semibold">
-          <h3 className="pb-2">Email</h3>
+          <h3 className="pb-1">Email</h3>
           <input
             className="bg-transparent w-full mb-[20px] px-4 py-2 rounded-xl"
             type="text"
@@ -72,7 +72,7 @@ function Signup() {
         </div>
 
         <div className="font-semibold">
-          <h3 className="pb-2">Password</h3>
+          <h3 className="pb-1">Password</h3>
           <input
             className="bg-transparent w-full mb-[20px] px-4 py-2 rounded-xl"
             type="password"
@@ -81,7 +81,7 @@ function Signup() {
           />
         </div>
         <div className="font-semibold">
-          <h3 className="pb-2">Confirm Password</h3>
+          <h3 className="pb-1">Confirm Password</h3>
           <input
             className="bg-transparent w-full mb-[20px] px-4 py-2 rounded-xl"
             type="password"
